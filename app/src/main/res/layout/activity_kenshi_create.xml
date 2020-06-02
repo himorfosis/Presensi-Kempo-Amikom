@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".kenshi.KenshiCreate"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/_30sdp"
+        android:paddingBottom="@dimen/_80sdp">
+
+        <TextView
+            style="@style/text_title_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama Lengkap"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/_10sdp"/>
+
+        <EditText
+            android:id="@+id/name_ed"
+            style="@style/EditTextBorderData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nama Lengkap Kenshi..."
+            android:padding="@dimen/_10sdp"
+            android:inputType="text"
+            />
+
+        <TextView
+            style="@style/text_title_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nomor Induk Kenshi"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/_10sdp"/>
+
+        <EditText
+            android:id="@+id/nik_ed"
+            style="@style/EditTextBorderData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nomor Induk Kenshi..."
+            android:padding="@dimen/_10sdp"
+            android:inputType="number"
+            />
+
+
+        <TextView
+            style="@style/text_title_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nomor Telepon"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/_10sdp"/>
+
+        <EditText
+            android:id="@+id/phone_ed"
+            style="@style/EditTextBorderData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nomor Telepon Kenshi..."
+            android:padding="@dimen/_10sdp"
+            android:inputType="number"
+            />
+
+        <TextView
+            style="@style/text_title_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alamat"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/_10sdp"/>
+
+        <EditText
+            android:id="@+id/address_ed"
+            style="@style/EditTextBorderData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Alamat Kenshi..."
+            android:padding="@dimen/_10sdp"
+            android:inputType="text"
+            />
+
+        <TextView
+            style="@style/text_title_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jenis Kelamin"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/_10sdp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/male_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/gold"
+                android:text="Laki - Laki"
+                android:textSize="@dimen/_12ssp" />
+
+            <RadioButton
+                android:id="@+id/female_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:buttonTint="@color/gold"
+                android:text="Perempuan"
+                android:textSize="@dimen/_12ssp" />
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/text_title_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tanggal Lahir"
+            android:textAllCaps="false" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/date_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:dropDownWidth="wrap_content"
+                android:spinnerMode="dropdown"
+                android:visibility="visible"
+                android:background="@drawable/bg_date_spinner"
+                />
+
+            <Spinner
+                android:id="@+id/month_spinner"
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:dropDownWidth="wrap_content"
+                android:spinnerMode="dropdown"
+                android:visibility="visible"
+                android:background="@drawable/bg_date_spinner"
+                />
+
+            <Spinner
+                android:id="@+id/year_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:dropDownWidth="wrap_content"
+                android:spinnerMode="dropdown"
+                android:visibility="visible"
+                android:background="@drawable/bg_date_spinner"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <Button
+        android:id="@+id/create_kenshi_btn"
+        style="@style/btn_secondary"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:text="SIMPAN"
+        />
+
+</LinearLayout>

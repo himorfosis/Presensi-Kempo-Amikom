@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "667692257973",
+    "firebase_url": "https://presensi-kempo-amikom.firebaseio.com",
+    "project_id": "presensi-kempo-amikom",
+    "storage_bucket": "presensi-kempo-amikom.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:667692257973:android:04b6bc4680fc78414124fc",
+        "android_client_info": {
+          "package_name": "com.kempoamikompresensi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "667692257973-0quu6q7canf96adkgm4p8cto58sb1odi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kempoamikompresensi",
+            "certificate_hash": "cbdc5590ed7e85d9377e69de3a3c5a71ed492018"
+          }
+        },
+        {
+          "client_id": "667692257973-p45266g4i3i6spljtf59j57qpb0unh37.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvuUwyXDF0yXCxgwdr6hV1iSWhvMuhFQg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "667692257973-p45266g4i3i6spljtf59j57qpb0unh37.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

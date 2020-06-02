@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presensi.ScanPresensi"
+    android:background="@color/text_black"
+    >
+
+    <FrameLayout
+        android:id="@+id/scan_frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.8"/>
+
+    <ImageView
+        android:id="@+id/close_scan_img"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:src="@drawable/ic_close_black"
+        android:padding="@dimen/_5sdp"
+        android:layout_margin="@dimen/_10sdp"
+        android:layout_gravity="right"
+        android:background="@drawable/circle_bg_white"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scan Kode Untuk Presensi"
+        android:layout_gravity="center|bottom"
+        style="@style/text_description_status"
+        android:layout_marginBottom="@dimen/_50sdp"
+        />
+
+</FrameLayout>
