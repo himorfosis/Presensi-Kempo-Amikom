@@ -16,7 +16,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.kempoamikompresensi.R
 import com.kempoamikompresensi.auth.Login
-import com.kempoamikompresensi.home.HomeActivity.Companion.HOME
 import com.kempoamikompresensi.home.fragment.HomeFragmnet
 import com.kempoamikompresensi.home.fragment.KenshiFragment
 import com.kempoamikompresensi.util.preferences.AppPreferences
@@ -43,17 +42,6 @@ class HomepageActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
 
         drawerLayout = findViewById(R.id.drawer_layout)
         navView = findViewById(R.id.nav_view)
-
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-//        appBarConfiguration = AppBarConfiguration(
-//            setOf(
-//                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-//                R.id.nav_tools, R.id.nav_share, R.id.nav_send
-//            ), drawerLayout
-//        )
-//        setupActionBarWithNavController(navController, appBarConfiguration)
-//        navView.setupWithNavController(this)
 
         val toggle = ActionBarDrawerToggle(
             this, drawerLayout, toolbar, 0, 0

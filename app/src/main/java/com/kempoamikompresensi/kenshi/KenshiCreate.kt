@@ -26,26 +26,6 @@ import java.util.*
 
 class KenshiCreate : AppCompatActivity() {
 
-    companion object {
-
-        val calendar: Calendar = Calendar.getInstance()
-        lateinit var database: DatabaseReference
-        lateinit var loadingDialog: DialogLoading
-
-        // gender
-        var SELECTED_GENDER = ""
-        var MALE = "M"
-        var FEMALE = "F"
-
-        // date born selected
-        var DATE_SELECTED = "-"
-        var MONTH_SELECTED = "-"
-        var YEAR_SELECTED = "-"
-        var CAL_YEAR_POS = 0
-        var CAL_MONTH_POS = 0
-
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_kenshi_create)
@@ -283,6 +263,26 @@ class KenshiCreate : AppCompatActivity() {
 
     private fun isLog(msg: String) {
         Log.e("KenshiCreate", msg)
+    }
+
+    companion object {
+
+        val calendar: Calendar = Calendar.getInstance()
+        lateinit var database: DatabaseReference
+        lateinit var loadingDialog: DialogLoading
+
+        // gender
+        var SELECTED_GENDER = ""
+        var MALE = "M"
+        var FEMALE = "F"
+
+        // date born selected
+        var DATE_SELECTED = "-"
+        var MONTH_SELECTED = "-"
+        var YEAR_SELECTED = "-"
+        var CAL_YEAR_POS = 0
+        var CAL_MONTH_POS = 0
+
     }
 
 

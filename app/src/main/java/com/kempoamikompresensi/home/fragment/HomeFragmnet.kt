@@ -41,7 +41,6 @@ class HomeFragmnet : Fragment() {
 
     private fun initUI() {
 
-//        adapterPresensi.add(DataSample.fetchDataPrensensi())
         scan_presensi_ll.onClick {
             startActivity(intentFor<ScanPresensi>())
         }
@@ -71,7 +70,6 @@ class HomeFragmnet : Fragment() {
                     }
 
                     if (listData.isNotEmpty()) {
-                        isProgressGone()
                         adapterPresensi.add(listData)
                     } else {
                         onDataEmpty()
@@ -85,13 +83,8 @@ class HomeFragmnet : Fragment() {
         })
     }
 
-    private fun isProgressGone() {
-//        progress_presensi.visibility = View.INVISIBLE
-    }
-
     private fun onDataEmpty() {
 
-        isProgressGone()
         title_status_tv.visibility = View.VISIBLE
         description_status_tv.visibility = View.VISIBLE
 
@@ -101,7 +94,6 @@ class HomeFragmnet : Fragment() {
     }
 
     private fun isFailure() {
-        isProgressGone()
         title_status_tv.visibility = View.VISIBLE
         description_status_tv.visibility = View.VISIBLE
 
