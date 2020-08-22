@@ -54,6 +54,14 @@ class KenshiDetail : AppCompatActivity() {
             gender_tv.text = "Perempuan"
         }
 
+        edit_btn.onClick {
+            startActivity(
+                intentFor<KenshiCreate>(
+                    "id" to getId
+                )
+            )
+        }
+
     }
 
     private fun initUI() {
@@ -72,11 +80,13 @@ class KenshiDetail : AppCompatActivity() {
     }
 
     private fun deleteDataKenshi() {
+
         database.orderByChild("id").equalTo(getId)
         database.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
                 toast("Failed delete data")
             }
+
             override fun onDataChange(p0: DataSnapshot) {
                 for (item in p0.children) {
                     var data = item.getValue(KenshiEntity::class.java)

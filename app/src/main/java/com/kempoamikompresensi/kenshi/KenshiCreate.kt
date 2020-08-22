@@ -9,8 +9,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.ActionBar
 import androidx.core.content.ContextCompat
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import com.kempoamikompresensi.R
 import com.kempoamikompresensi.dialog.DialogLoading
 import com.kempoamikompresensi.home.HomepageActivity
@@ -26,23 +25,67 @@ import java.util.*
 
 class KenshiCreate : AppCompatActivity() {
 
+    var getId: String = ""
+    var getCreatedAccount: Long = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_kenshi_create)
 
+        database = FirebaseDatabase.getInstance().getReference("kenshi")
         setToolbar()
         initUI()
-        database = FirebaseDatabase.getInstance().getReference("kenshi")
 
     }
 
     private fun initUI() {
 
-        setBornDate(DateSet.getDateToday())
+        getId = intent.getStringExtra("id")
+        if (getId.isNotEmpty()) {
+
+            isLog("update data")
+            database.orderByChild("id").equalTo(getId)
+            database.addValueEventListener(object : ValueEventListener {
+                override fun onCancelled(p0: DatabaseError) {
+                    toast("Failed show data")
+                }
+
+                override fun onDataChange(p0: DataSnapshot) {
+                    for (item in p0.children) {
+                        var it = item.getValue(KenshiEntity::class.java)
+                        if (it!!.id == getId) {
+                            name_ed.setText(it.name)
+                            address_ed.setText(it.address)
+                            phone_ed.setText(it.phone)
+                            nik_ed.setText(it.nik)
+                            getCreatedAccount = it.created_at!!
+                            setBornDate(it.born!!)
+
+                            isLog("Date Selected : ${it.born}")
+                            // check gender
+                            if (it.gender == "M") {
+                                onSelectGender(MALE)
+                            } else {
+                                onSelectGender(FEMALE)
+                            }
+
+                            break
+                        }
+                    }
+                }
+            })
+
+        } else {
+            setBornDate(DateSet.getDateToday())
+        }
 
         create_kenshi_btn.onClick {
             isLoading()
-            submitDataKenshi()
+            if(getId.isEmpty()) {
+                submitDataKenshi()
+            } else {
+                updateDataKenshi()
+            }
         }
 
         male_rb.onClick {
@@ -51,6 +94,38 @@ class KenshiCreate : AppCompatActivity() {
 
         female_rb.onClick {
             onSelectGender(FEMALE)
+        }
+
+    }
+
+    private fun updateDataKenshi() {
+
+        isLog("update data kenshi")
+        val name = name_ed.text.toString()
+        val address = address_ed.text.toString()
+        val phone = phone_ed.text.toString()
+        val nik = nik_ed.text.toString()
+        val born = "$YEAR_SELECTED-$MONTH_SELECTED-$DATE_SELECTED"
+
+        if (name.isNotEmpty() && address.isNotEmpty() && phone.isNotEmpty()
+            && SELECTED_GENDER.isNotEmpty() && born.isNotEmpty() && nik.isNotEmpty()
+        ) {
+
+            loadingDialog.dismiss()
+            val kenshiData = KenshiEntity(getId, nik, name, phone, address, SELECTED_GENDER, born, getCreatedAccount, DateSet.getTimestampNow())
+            database.child(getId)
+                .setValue(kenshiData)
+                .addOnCompleteListener {
+                    toast("Successfull Save Data")
+                }
+
+            startActivity(intentFor<HomepageActivity>(
+                "from" to HomepageActivity.KENSHI)
+            )
+
+        } else {
+            loadingDialog.dismiss()
+            toast(getString(R.string.please_complete_data))
         }
 
     }
@@ -64,25 +139,13 @@ class KenshiCreate : AppCompatActivity() {
         val born = "$YEAR_SELECTED-$MONTH_SELECTED-$DATE_SELECTED"
         val idKenshi = database.push().key.toString()
 
-        isLog("-------------------------------")
-        isLog("idKenshi : $idKenshi")
-        isLog("nama : $name")
-        isLog("address : $address")
-        isLog("phone : $phone")
-        isLog("nik : $nik")
-        isLog("born : $born")
-        isLog("SELECTED_GENDER : $SELECTED_GENDER")
-        isLog("timestamp : ${DateSet.getTimestampNow()}")
-        isLog("descript timestamp : ${DateSet.descripTimestamp(
-            DateSet.getTimestampNow())}")
-
         if (name.isNotEmpty() && address.isNotEmpty() && phone.isNotEmpty()
             && SELECTED_GENDER.isNotEmpty() && born.isNotEmpty() && nik.isNotEmpty()
         ) {
 
             loadingDialog.dismiss()
 
-            val kenshiData = KenshiEntity(idKenshi, nik, name, phone, address, SELECTED_GENDER, born,  DateSet.getTimestampNow(), DateSet.getTimestampNow())
+            val kenshiData = KenshiEntity(idKenshi, nik, name, phone, address, SELECTED_GENDER, born, DateSet.getTimestampNow(), DateSet.getTimestampNow())
             database.child(idKenshi)
                 .setValue(kenshiData)
                 .addOnCompleteListener {
@@ -143,7 +206,6 @@ class KenshiCreate : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-
                 val data = parent!!.getItemAtPosition(position).toString()
                 DATE_SELECTED = if (data.toInt() < 10) "0$data" else data
                 isLog("selected date : $DATE_SELECTED")

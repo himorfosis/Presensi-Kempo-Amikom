@@ -11,10 +11,11 @@
         android:roundIcon="@mipmap/logo_kempo_amikom"
         android:supportsRtl="true"
         android:theme="@style/NoActionBar">
+        <activity android:name=".auth.Register"></activity>
         <activity
             android:name=".home.HomepageActivity"
             android:label="@string/title_activity_homepage"
-            android:theme="@style/NoActionBar.NoActionBar"></activity>
+            android:theme="@style/NoActionBar.NoActionBar" />
         <activity
             android:name=".auth.Login"
             android:screenOrientation="portrait"
@@ -31,10 +32,6 @@
             android:name=".kenshi.KenshiCreate"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
-        <activity
-            android:name=".home.HomeActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/NoActionBar" />
         <activity
             android:name=".presensi.ScanPresensi"
             android:screenOrientation="portrait"

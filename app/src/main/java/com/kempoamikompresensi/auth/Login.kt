@@ -13,6 +13,7 @@ import org.jetbrains.anko.toast
 class Login : AppCompatActivity() {
 
     lateinit var account: AppPreferences
+    var username = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,16 +36,14 @@ class Login : AppCompatActivity() {
     }
 
     private fun submitLogin() {
-        val username = username_ed.text.toString()
+        username = username_ed.text.toString()
         val password = password_ed.text.toString()
 
         if (username.isNotEmpty() && password.isNotEmpty()) {
             if (username.toLowerCase() == "admin" && password.toLowerCase() == "secret") {
-                account = AppPreferences(this, "account")
-                account.saveString("officer", username)
-
-                startActivity(intentFor<HomepageActivity>())
-
+                successLogin()
+            } else if (username == "egar" && password == "secret") {
+                successLogin()
             } else {
                 toast("Username Atau Password Salah")
             }
@@ -53,6 +52,13 @@ class Login : AppCompatActivity() {
             toast("Harap Lengkapi Data")
         }
 
+    }
+
+    private fun successLogin() {
+        account = AppPreferences(this, "account")
+        account.saveString("officer", username)
+
+        startActivity(intentFor<HomepageActivity>())
     }
 
     override fun onBackPressed() {

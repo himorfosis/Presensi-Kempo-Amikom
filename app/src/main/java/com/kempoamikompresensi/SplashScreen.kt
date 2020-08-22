@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import com.kempoamikompresensi.auth.Login
+import com.kempoamikompresensi.auth.Register
 import com.kempoamikompresensi.home.HomepageActivity
 import com.kempoamikompresensi.util.preferences.AppPreferences
 import org.jetbrains.anko.intentFor
@@ -22,6 +23,9 @@ class SplashScreen : AppCompatActivity() {
 
         Handler().postDelayed(object : Thread() {
             override fun run() {
+
+//                startActivity(intentFor<Register>())
+
                 if (officer == null || officer.isEmpty()) {
                     startActivity(intentFor<Login>())
                 } else {

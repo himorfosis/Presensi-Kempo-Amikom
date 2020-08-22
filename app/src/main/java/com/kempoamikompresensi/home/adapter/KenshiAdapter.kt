@@ -37,15 +37,17 @@ class KenshiAdapter : RecyclerView.Adapter<KenshiAdapter.ViewHolder>() {
 
             holder.itemView.onClick {
 
-                context.startActivity(context.intentFor<KenshiDetail>(
-                                        "id" to data.id,
-                                        "name" to data.name,
-                                        "address" to data.address,
-                                        "phone" to data.phone,
-                                        "nik" to data.nik,
-                                        "born" to data.born,
-                                        "gender" to data.gender
-                                ))
+                context.startActivity(
+                    context.intentFor<KenshiDetail>(
+                        "id" to data.id,
+                        "name" to data.name,
+                        "address" to data.address,
+                        "phone" to data.phone,
+                        "nik" to data.nik,
+                        "born" to data.born,
+                        "gender" to data.gender
+                    )
+                )
 
             }
         }

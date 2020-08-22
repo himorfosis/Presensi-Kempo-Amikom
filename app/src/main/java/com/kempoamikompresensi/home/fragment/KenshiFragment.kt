@@ -46,9 +46,13 @@ class KenshiFragment : Fragment() {
 
     private fun initUI() {
 
-//        adapterKenshi.add(DataSample.fetchDataKenshi())
         add_kenshi_ll.onClick {
-            startActivity(intentFor<KenshiCreate>())
+            startActivity(
+                intentFor<KenshiCreate>(
+                    "id" to ""
+                )
+            )
+
         }
 
     }

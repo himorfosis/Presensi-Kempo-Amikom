@@ -113,7 +113,7 @@
             <RadioButton
                 android:id="@+id/male_rb"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="21dp"
                 android:buttonTint="@color/gold"
                 android:text="Laki - Laki"
                 android:textSize="@dimen/_12ssp" />
